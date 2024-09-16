@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANTUM CALL ASSAULT</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Orbitron', sans-serif;
+            background-color: #000;
+            color: #0ff;
+            overflow: hidden;
+        }
+
+        .space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(1px 1px at 25px 5px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 25px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 125px 20px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 50px 75px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 15px 125px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2.5px 2.5px at 110px 80px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: space-float 300s linear infinite;
+        }
+
+        @keyframes space-float {
+            from { background-position: 0 0; }
+            to { background-position: 0 200px; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 20px;
+        }
+
+        form {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid #0ff;
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 20px #0ff, inset 0 0 10px #0ff;
+            padding-right: 5%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0ff;
+            font-size: 0.9em;
+        }
+
+        input[type="tel"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #0ff;
+            border-radius: 5px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        input[type="tel"]:focus, input[type="number"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px #0ff;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 2px solid #0ff;
+            color: #0ff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        input[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
+            transition: all 0.5s ease;
+        }
+
+        input[type="submit"]:hover::before {
+            left: 100%;
+        }
+
+        input[type="submit"]:hover {
+            box-shadow: 0 0 20px #0ff;
+        }
+
+        datalist {
+            display: none;
+        }
+
+        .button {
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #0ff;
+            color: #0ff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
+            transition: all 0.5s ease;
+        }
+
+        .button:hover::before {
+            left: 100%;
+        }
+
+        .button:hover {
+            box-shadow: 0 0 20px #0ff;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="space-background"></div>
+    <div class="container">
+        <form action="{{ url_for('process_call') }}" method="post">
+            <h1>QUANTUM Call ASSAULT</h1>
+            
+            <label for="country-code">Country Code:</label>
+            <input type="tel" id="country-code" name="Country Code" pattern="[0-9]{1,4}" title="Sector code should contain only numbers." list="country-code-suggestions" placeholder="Enter sector code...">
+            <datalist id="country-code-suggestions">
+                <option value="1">
+                <option value="91">
+                <option value="44">
+            </datalist>
+
+            <label for="target-number">Target Number:</label>
+            <input type="tel" id="target-number" name="Target Number" pattern="[0-9]{10,15}" title="Please enter valid target coordinates." placeholder="Enter target coordinates...">
+
+            <label for="times">Bomber Intensity (max 15):</label>
+            <input type="number" id="times" name="Times" min="1" max="15" placeholder="Enter intensity...">
+
+            <label for="delay">Time Dilation (seconds):</label>
+            <input type="number" id="delay" name="second" min="0" placeholder="Enter time dilation...">
+
+            <button type="submit" class="pulse button">INITIATE SEQUENCE</button>
+        </form>
+    </div>
+</body>
+</html>
